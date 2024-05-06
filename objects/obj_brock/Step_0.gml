@@ -18,6 +18,7 @@ if (_chao)
 	if(_jump)
 	{
 		velv = - vel_jump;
+		
 	}
 	
 	//Mudando sprite
@@ -33,8 +34,9 @@ if (_chao)
 	}
 }
 	
-else
+else //Pulo
 {
+	//Alteração do sprite	
 	if (velv <0)
 	{
 		sprite_index = spr_brock_jump;
@@ -42,10 +44,19 @@ else
 	else
 	{
 		sprite_index = spr_brock_fall;
+		//Dano ao inimigo
+		var _inimigo = instance_place(x, y +1, obj_inimigo_pai);
+		
+		if (_inimigo)
+		{
+			velv = -vel_jump;
+			
+			_inimigo.dano = true;
+		}
 	}
 	
 	
-	//gravidade
+	//Gravidade
 	velv += grav;
 	if (velh != 0) 
 	{

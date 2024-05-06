@@ -21,7 +21,8 @@ if (_chao)
 		tempo_andar = room_speed * 3;
 	}
 	
-	if(velh != 0)
+	//Controle de animação do inimigo
+	if(velh != 0 && dano == false)
 	{
 		sprite_index = spr_zombie_walk;
 		image_xscale = sign(velh);
@@ -52,4 +53,11 @@ else
 	{
 		image_xscale = sign(velh);
 	}
+}
+
+//Check de dano
+if (dano) 
+{
+	sprite_index = spr_zombie_death;
+	velh = 0;
 }
